@@ -1,0 +1,59 @@
+#include <stdio.h>
+int binarySearch(int nums[], int target, int left, int right) 
+{
+    while (left <= right) 
+	{
+        int mid = left + (right - left) / 2;
+        if (nums[mid] == target) 
+		{
+            return mid;
+        } else if (nums[mid] < target) 
+		{
+            left = mid + 1;
+        } else 
+		{
+            right = mid - 1;
+        }
+    }
+    return -1;
+}
+int main() 
+{
+    int n,i;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+	int nums[n];
+    printf("Enter the sorted array elements:\n");
+    for (i = 0; i < n; i++) 
+	{
+        scanf("%d", &nums[i]);
+    }
+	int target;
+    printf("Enter the target element to search for: ");
+    scanf("%d", &target);
+	int result = binarySearch(nums, target, 0, n - 1);
+	if (result != -1) 
+	{
+        printf("Target %d found at index %d.\n", target, result);
+    } else 
+	{
+        printf("Target %d not found in the array.\n", target);
+    }
+	return 0;
+}
+
+output:
+Enter the number of elements: 6
+Enter the sorted array elements:
+1
+2
+3
+4
+5
+6
+Enter the target element to search for: 6
+Target 6 found at index 5.
+
+--------------------------------
+Process exited after 32.88 seconds with return value 0
+Press any key to continue . . .
